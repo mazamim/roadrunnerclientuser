@@ -38,16 +38,27 @@ GetEmployee(id: number) {
 //   return this.http.post(this.baseUrl + 'users/' + empId + '/photos/' + id + '/setMain', {});
 // }
 
+
+//http://localhost:5000/employees/1/documets/test/1
 LoadAllDocuments(empId: number)
 {
   return this.http.get(this.baseUrl + 'employees/' + empId + '/documets/test/'+ empId);
-  //http://localhost:5000/employees/1/documets/test/1
+
 }
 
+
+//http://localhost:5000/employees/1/documets/main/1
 LoadMain(empId: number)
 {
   return this.http.get(this.baseUrl + 'employees/' + empId + '/documets/main/'+ empId);
-  //http://localhost:5000/employees/1/documets/main/1
+
+}
+
+//http://localhost:5000/employees/attendance
+PunchIn(data:any)
+{
+  return this.http.post(this.baseUrl + 'employees/attendance',data);
+
 }
 
 }

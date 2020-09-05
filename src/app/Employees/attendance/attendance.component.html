@@ -1,1 +1,92 @@
-<p>attendance works!</p>
+  <div class="tab-panel">
+    <tabset class="member-tabset">
+      <tab heading="Punch IN">
+
+
+          <form [formGroup]="myForm">
+
+
+              <div class="form-group">
+                <input type="text"
+                class="form-control"
+                placeholder="Datepicker"
+                [bsConfig]="{ dateInputFormat: 'YYYY/MM/DD' }"
+                bsDatepicker
+                formControlName="punchIn"  style="background-color: cadetblue;"
+                />
+                <pre *ngIf="myForm.value.date" class="code-preview">{{myForm.value.date | date}}</pre>
+              </div>
+              <div class="row p-2">
+              <div class="form-group">
+                <timepicker [formControlName]="'punchtime'" ></timepicker>
+              </div>
+
+
+              <button mat-fab color="primary" aria-label="Example" (click)="onSubmit()">
+                <mat-icon>check_circle_outline</mat-icon>
+              </button>
+</div>
+          </form>
+
+
+
+
+      </tab>
+
+      <tab heading="Punch OUT">
+
+
+        <form [formGroup]="myForm2">
+
+
+          <div class="form-group">
+            <input type="text"
+            class="form-control"
+            placeholder="Datepicker"
+            [bsConfig]="{ dateInputFormat: 'YYYY/MM/DD' }"
+            bsDatepicker
+            formControlName="punchOut" style="background-color: rgb(230, 218, 215);">
+            <pre *ngIf="myForm2.value.date" class="code-preview">{{myForm2.value.date | date}}</pre>
+          </div>
+          <div class="row p-2">
+          <div class="form-group">
+            <timepicker [formControlName]="'punchOut'" ></timepicker>
+          </div>
+
+          <button mat-fab color="warn" aria-label="Save" >
+            <mat-icon>check_circle_outline</mat-icon>
+          </button>
+
+</div>
+      </form>
+
+
+
+      </tab>
+
+      <tab heading="Report">
+
+
+        </tab>
+    </tabset>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

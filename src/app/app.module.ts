@@ -22,9 +22,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { FileUploadModule } from 'ng2-file-upload';
 import { OwlModule } from 'ngx-owl-carousel';
-
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { MomentModule } from 'ngx-moment';
 
 //material
+import { MatTableExporterModule } from 'mat-table-exporter';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { SidebarStickyComponent } from './dashboard/sidebar-sticky/sidebar-sticky.component';
@@ -97,6 +99,7 @@ export function tokenGetter() {
     }),
     BreadcrumbModule,
     OwlModule,
+    TimepickerModule.forRoot(),
 
 
     //ngx
@@ -107,6 +110,7 @@ export function tokenGetter() {
     NgxPaginationModule,
     TabsModule.forRoot(),
     FileUploadModule,
+    MomentModule,
 
     //material
     MatTooltipModule,
@@ -119,7 +123,8 @@ export function tokenGetter() {
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatTableExporterModule
 
 
 
