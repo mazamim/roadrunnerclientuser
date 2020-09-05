@@ -1,0 +1,56 @@
+<div class="d-flex flex-row-reverse" style="background-color: cadetblue;">
+  <div class="p-2"><button type="button" class="btn btn-dark" (click)="openDialog()">Add New Employee</button></div>
+
+
+  <form class="form-inline" [formGroup]="myForm">
+    <div class="form-group">
+      <input type="text"
+      class="form-control"
+      placeholder="Search"
+      (keyup)="applyFilter($event.target.value)"
+      >
+      </div>
+    </form>
+
+</div>
+
+
+
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="employeeName">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.employeeName}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> Position </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="mobile">
+      <th mat-header-cell *matHeaderCellDef> Mobile </th>
+      <td mat-cell *matCellDef="let element"> {{element.mobile}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="emailadd">
+      <th mat-header-cell *matHeaderCellDef> Email-Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.emailadd}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRowClicked(row)"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+
+
+
+

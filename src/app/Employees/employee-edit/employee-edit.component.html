@@ -1,0 +1,83 @@
+
+  <div class="row">
+    <div class="col-sm-4">
+        <h1>Your Profile</h1>
+    </div>
+    <div class="col-sm-8">
+      <div *ngIf="editForm.dirty" class="alert alert-info">
+        <strong>Information:</strong> You have made changes.  Any unsaved changes will be lost!
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card">
+        <img class="card-img-top img-thumbnail" src="{{photoUrl || '../../../assets/user.png'}}" alt="">
+        <div class="card-body">
+          <div>
+            <strong>Name:</strong>
+            <p>{{employee.employeeName}}</p>
+          </div>
+          <div>
+            <strong>Position:</strong>
+            <p>{{employee.position}}</p>
+          </div>
+        </div>
+        <div class="card-footer">
+            <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Save Changes</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <tabset class="member-tabset">
+          <tab heading="Edit Profile">
+
+            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateEmployee()">
+              <h4 class="mt-2">Skills</h4>
+              <textarea name="skills" rows="3" class="form-control"
+              [(ngModel)]="employee.skills"></textarea>
+
+              <h4 class="mt-2">Address</h4>
+                <input type="text"  name="address" class="form-control" [(ngModel)]="employee.address">
+
+              <h4 class="mt-2">Describtions</h4>
+              <textarea name="description" rows="3" class="form-control"
+                [(ngModel)]="employee.description"></textarea>
+
+
+              <h4 class="mt-2">Salary Details:</h4>
+              <div class="form-inline">
+                <label for="salarytype" class="mb-2 mr-sm-2">Salary Type</label>
+                <select class="form-control mb-2 mr-sm-2" id="salarytype" name="salarytype" [(ngModel)]="employee.salarytype">
+                  <option>PerHour</option>
+                  <option>Package</option>
+                </select>
+
+                <label for="salary" class="mb-2 mr-sm-2">Amount</label>
+                 <input type="text" class="form-control mb-2 mr-sm-2" id="salary" name="salary" [(ngModel)]="employee.salary">
+
+
+                 <label for="payment_mode" class="mb-2 mr-sm-2">Payment Mode</label>
+                 <select class="form-control mb-2 mr-sm-2" id="payment_mode" name="payment_mode" [(ngModel)]="employee.payment_mode">
+                  <option>ABN</option>
+                  <option>TFN</option>
+                </select>
+
+              </div>
+
+              <h4 class="mt-2">Bank Details:</h4>
+              <textarea name="bankdetails" rows="6" class="form-control"
+              [(ngModel)]="employee.bankdetails"></textarea>
+
+            </form>
+
+          </tab>
+          <tab heading="Edit Documents">
+            <app-document-editor [empdocuments]="empdocuments" [id]="id" ></app-document-editor>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
+

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -12,7 +12,7 @@ import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
+  @Output() cancelRegister = new EventEmitter();
   user: User;
   registerForm: FormGroup;
   bsConfig: Partial<BsDatepickerConfig>;
@@ -53,7 +53,10 @@ export class RegisterComponent implements OnInit {
     }
 
   }
-  cancel(){}
+  cancel(){
+
+    this.cancelRegister.emit(false);
+  }
 
   passwordMatchValidator(g: FormGroup) {
     return g.get('password').value === g.get('confirmPassword').value ? null : {'mismatch': true};

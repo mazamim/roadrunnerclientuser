@@ -1,11 +1,11 @@
 import { BrowserModule, HammerGestureConfig } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 //packages
 import { JwtModule } from '@auth0/angular-jwt';
@@ -16,7 +16,37 @@ import { HomeComponent } from './home/home.component';
 import { OrderComponent } from './order/order.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NgxSpinnerModule } from "ngx-spinner";
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { FileUploadModule } from 'ng2-file-upload';
+import { OwlModule } from 'ngx-owl-carousel';
 
+
+//material
+import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { SidebarStickyComponent } from './dashboard/sidebar-sticky/sidebar-sticky.component';
+import { ContentMainComponent } from './dashboard/content-main/content-main.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatRippleModule} from '@angular/material/core';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSelectModule} from '@angular/material/select';
+import { SectionHeaderComponent } from './dashboard/section-header/section-header.component';
+import { BreadcrumbModule } from 'xng-breadcrumb';
+import { TableandchartComponent } from './dashboard/tableandchart/tableandchart.component';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { EmployeeComponent } from './Employees/employee/employee.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { DialogContentEmployeesComponent } from './Employees/dialog-content-employees/dialog-content-employees.component';
+import { EmployeeEditComponent } from './Employees/employee-edit/employee-edit.component';
+import { DocumentEditorComponent } from './Employees/document-editor/document-editor.component';
+import { AttendanceComponent } from './Employees/attendance/attendance.component';
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
@@ -35,13 +65,29 @@ export function tokenGetter() {
     RegisterComponent,
     HomeComponent,
     OrderComponent,
-    DashboardComponent
+    DashboardComponent,
+    SidebarStickyComponent,
+    ContentMainComponent,
+    SectionHeaderComponent,
+    TableandchartComponent,
+    EmployeeComponent,
+    DialogContentEmployeesComponent,
+    EmployeeEditComponent,
+    DocumentEditorComponent,
+    AttendanceComponent
   ],
   imports: [
+
+    //angular
     BrowserModule,
     AppRoutingModule,
-    ToastrModule.forRoot(),
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+
+    //package
+    ToastrModule.forRoot(),
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -49,13 +95,36 @@ export function tokenGetter() {
         disallowedRoutes: ['localhost:5000/Auth/Register']
       }
     }),
-    FormsModule,
-    ReactiveFormsModule,
+    BreadcrumbModule,
+    OwlModule,
+
+
+    //ngx
+    NgxChartsModule,
     BsDatepickerModule.forRoot(),
-    BrowserAnimationsModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    NgxSpinnerModule,
+    NgxPaginationModule,
+    TabsModule.forRoot(),
+    FileUploadModule,
+
+    //material
+    MatTooltipModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatRippleModule,
+    MatInputModule,
+    MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    MatIconModule
+
+
+
   ],
-  providers: [],
+  providers: [ {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
