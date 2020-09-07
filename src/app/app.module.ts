@@ -39,16 +39,21 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSelectModule} from '@angular/material/select';
-import { SectionHeaderComponent } from './dashboard/section-header/section-header.component';
+
 import { BreadcrumbModule } from 'xng-breadcrumb';
 import { TableandchartComponent } from './dashboard/tableandchart/tableandchart.component';
-import { LoadingInterceptor } from './interceptors/loading.interceptor';
+
 import { EmployeeComponent } from './Employees/employee/employee.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { DialogContentEmployeesComponent } from './Employees/dialog-content-employees/dialog-content-employees.component';
 import { EmployeeEditComponent } from './Employees/employee-edit/employee-edit.component';
 import { DocumentEditorComponent } from './Employees/document-editor/document-editor.component';
 import { AttendanceComponent } from './Employees/attendance/attendance.component';
+import { CustomerComponent } from './Customer/customer/customer.component';
+import { ClientComponent } from './Client/client/client.component';
+import { DialogContentCustomerComponent } from './Customer/dialog-content-customer/dialog-content-customer.component';
+import { LoadingInterceptor } from './Helpers/interceptors/loading.interceptor';
+import { SectionHeaderComponent } from './Helpers/section-header/section-header.component';
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
@@ -76,7 +81,10 @@ export function tokenGetter() {
     DialogContentEmployeesComponent,
     EmployeeEditComponent,
     DocumentEditorComponent,
-    AttendanceComponent
+    AttendanceComponent,
+    CustomerComponent,
+    ClientComponent,
+    DialogContentCustomerComponent
   ],
   imports: [
 

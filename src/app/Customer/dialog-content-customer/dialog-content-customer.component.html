@@ -1,0 +1,55 @@
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="customerForm" (ngSubmit)="submitData()" novalidate>
+    <div class="row">
+      <div class="col-md-5 mb-3">
+      <input type="text" formControlName="customerName" class="form-control" placeholder="Customer Name" required>
+
+    </div>
+
+
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-5 mb-3">
+        <input type="email" formControlName="emailadd" class="form-control"  placeholder="Email" required>
+
+
+
+    </div>
+    <div class="col-md-5 mb-3">
+      <input type="text" formControlName="mobile" class="form-control" placeholder="Mobile"  required>
+
+
+    </div>
+
+
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-md-10 mb-3">
+        <textarea class="form-control" formControlName="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+    </div>
+
+    </div>
+
+
+    <div class="d-flex flex-row">
+      <div class="p-2"> <button type="submit" class="btn btn-success" [disabled]="!customerForm.valid"><mat-icon inline="true">add</mat-icon>Add Customer</button></div>
+      <div class="p-2"><button type="button" class="btn btn-secondary" (click)="ResetForm()"><mat-icon inline="true">clear</mat-icon>Reset</button></div>
+    </div>
+
+  </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+
+    <button mat-button mat-dialog-close><mat-icon>power_settings_new</mat-icon> Exit</button>
+
+
+
+  </mat-dialog-actions>
+
