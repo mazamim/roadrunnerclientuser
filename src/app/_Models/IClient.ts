@@ -1,7 +1,7 @@
 export interface IClient {
 
   id: number;
-  customerName: string;
+  clientName: string;
   mobile: string;
   emailadd: string;
   description: string;
@@ -10,9 +10,9 @@ export interface IClient {
 
 }
 
-export interface ITableCustomerData {
+export interface ITableClientData {
   id: number;
-  customerName: string;
+  clientName: string;
   mobile: string;
   emailadd: string;
   description: string;

@@ -1,0 +1,99 @@
+
+  <div class="row">
+    <div class="col-sm-4">
+        <h1>Your Profile</h1>
+    </div>
+    <div class="col-sm-8">
+      <div *ngIf="editForm.dirty" class="alert alert-info">
+        <strong>Information:</strong> You have made changes.  Any unsaved changes will be lost!
+      </div>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col-sm-12">
+      <div class="tab-panel">
+        <tabset class="member-tabset">
+          <tab heading="Edit Profile">
+
+
+
+            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateTicket()">
+              <h4>Address</h4>
+                <input type="text"  name="address" class="form-control" [(ngModel)]="ticket.address">
+
+                <div class="row">
+                  <div class="col-md-6">
+                <h4>Job Type</h4>
+                <select class="form-control" name="jobType" [(ngModel)]="ticket.jobType" >
+                  <option value="" selected disabled hidden>Job Type</option>
+
+
+
+                 </select>
+                 </div>
+                 <div class="col-md-6">
+                 <h4>Status</h4>
+                 <select class="form-control" name="status" [(ngModel)]="ticket.status" >
+
+                   <option>Assigned</option>
+                     <option>Pending</option>
+                     <option>Completed_not_Closed</option>
+                     <option>Completed_not_Invoiced</option>
+                     <option>Completed_and_Invoice_Updated</option>
+
+
+                  </select>
+                  </div>
+                  </div>
+
+              <h4>Describtions</h4>
+              <textarea name="describtion" rows="1" class="form-control"
+                [(ngModel)]="ticket.describtion"></textarea>
+
+
+                <h4>Remarks</h4>
+              <textarea name="remarks" rows="1" class="form-control"
+                [(ngModel)]="ticket.remarks"></textarea>
+
+                <div class="row">
+                 <div class="col-md-6">
+
+
+                  </div>
+
+                 <div class="col-md-6">
+
+
+                 </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                <h4><b>Add Employees</b></h4>
+
+
+                    </div>
+                    <div class="col-md-6">
+                <h4><b>Add Rates</b></h4>
+
+
+    </div>
+                </div>
+
+
+                <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Save Changes</button>
+
+              </form>
+
+
+
+
+          </tab>
+          <tab heading="Edit Documents">
+
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>

@@ -54,6 +54,17 @@ import { ClientComponent } from './Client/client/client.component';
 import { DialogContentCustomerComponent } from './Customer/dialog-content-customer/dialog-content-customer.component';
 import { LoadingInterceptor } from './Helpers/interceptors/loading.interceptor';
 import { SectionHeaderComponent } from './Helpers/section-header/section-header.component';
+import { DialogContentClientComponent } from './Client/dialog-content-client/dialog-content-client.component';
+import { TicketsComponent } from './Tickets/tickets/tickets.component';
+
+import { RatecardComponent } from './Tickets/ratecard/ratecard.component';
+import { TicketEditComponent } from './Tickets/ticket-edit/ticket-edit.component';
+import { OpendialogforTicketTimeComponent } from './Tickets/opendialogfor-ticket-time/opendialogfor-ticket-time.component';
+import { AddBulkTicketsComponent } from './Tickets/add-bulk-tickets/add-bulk-tickets.component';
+import { RefreshComponent } from './refresh/refresh.component';
+
+
+
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
@@ -84,7 +95,21 @@ export function tokenGetter() {
     AttendanceComponent,
     CustomerComponent,
     ClientComponent,
-    DialogContentCustomerComponent
+    DialogContentCustomerComponent,
+    DialogContentClientComponent,
+    TicketsComponent,
+
+    RatecardComponent,
+
+    TicketEditComponent,
+
+    OpendialogforTicketTimeComponent,
+
+    AddBulkTicketsComponent,
+
+    RefreshComponent,
+
+
   ],
   imports: [
 

@@ -27,3 +27,8 @@ export interface ITableData {
   emailadd: string;
 
 }
+
+export interface IEmployeeForTicket {
+  id:number;
+  employeeName:string;
+}

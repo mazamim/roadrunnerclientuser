@@ -1,0 +1,55 @@
+
+
+          <div class="col-xl-6">
+            <h4 class="text-muted mb-4">Customers</h4>
+
+
+            <div class="container">
+              <div class="title">Excel</div>
+              <div class="sub-title">Import and Export data from Excel</div>
+
+
+
+              <hr>
+
+              <div class="tools">
+                <button>
+                  <label>
+                    <span class="mdi mdi-file-export"> </span>
+                    <small>Import</small>
+                    <input hidden type="file" (change)="onFileChange($event)" multiple="false">
+                  </label>
+                </button>
+
+
+              </div>
+
+              <table id="contactJs" class="table-contact">
+                <tr class="thead">
+
+                  <th>address</th>
+                  <th>jobType</th>
+                  <th>describtion</th>
+                  <th>status</th>
+                  <th>remarks</th>
+                  <th>cus_id </th>
+                  <th>client_id</th>
+                </tr>
+                <tr class="tbody" *ngFor="let contact of importTicket index as i; let odd = odd" [ngClass]="{'odd': odd}">
+
+                  <td>{{contact?.address}}</td>
+                  <td>{{contact?.jobType}}</td>
+                  <td>{{contact?.describtion}}</td>
+                  <td>{{contact?.status}}</td>
+                  <td>{{contact?.remarks}}</td>
+                  <td>{{contact?.CustomerId}}</td>
+                  <td>{{contact?.ClientId}}</td>
+                </tr>
+              </table>
+
+            </div>
+
+            <button type="submit" class="btn btn-success" style="margin-left:10px" (click)="onSumbit()">Save All</button>
+
+          </div>
+
