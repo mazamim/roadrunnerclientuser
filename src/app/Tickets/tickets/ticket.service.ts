@@ -29,4 +29,12 @@ export class TicketService {
 
   }
 
+  //http://localhost:5000/ticket/106/documets/all/106
+LoadAllTicketDocuments(tktId: number)
+{
+  return this.http.get(this.baseUrl + 'ticket/' + tktId + '/documets/all/'+ tktId);
+
+}
+
+
 }

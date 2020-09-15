@@ -27,8 +27,9 @@
               <table id="contactJs" class="table-contact">
                 <tr class="thead">
 
-                  <th>address</th>
+
                   <th>jobType</th>
+                  <th>address</th>
                   <th>describtion</th>
                   <th>status</th>
                   <th>remarks</th>
@@ -37,8 +38,9 @@
                 </tr>
                 <tr class="tbody" *ngFor="let contact of importTicket index as i; let odd = odd" [ngClass]="{'odd': odd}">
 
-                  <td>{{contact?.address}}</td>
+
                   <td>{{contact?.jobType}}</td>
+                  <td>{{contact?.address}}</td>
                   <td>{{contact?.describtion}}</td>
                   <td>{{contact?.status}}</td>
                   <td>{{contact?.remarks}}</td>

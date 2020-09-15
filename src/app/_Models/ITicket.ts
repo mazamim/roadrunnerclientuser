@@ -8,7 +8,9 @@ export interface ITicket {
   describtion: string;
   status: string
   remarks: string;
+  customerId:number;
   customerName:string;
+  clientId:number;
   clientName:string;
   employee?:IEmployeeForTicket[];
   created?:Date;

@@ -24,6 +24,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { OwlModule } from 'ngx-owl-carousel';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { MomentModule } from 'ngx-moment';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 //material
 import { MatTableExporterModule } from 'mat-table-exporter';
@@ -62,6 +63,8 @@ import { TicketEditComponent } from './Tickets/ticket-edit/ticket-edit.component
 import { OpendialogforTicketTimeComponent } from './Tickets/opendialogfor-ticket-time/opendialogfor-ticket-time.component';
 import { AddBulkTicketsComponent } from './Tickets/add-bulk-tickets/add-bulk-tickets.component';
 import { RefreshComponent } from './refresh/refresh.component';
+import { TicketDetailResolver } from './_Resolver/TicketDetailResolver.resolver';
+import { AddTicketPicturesComponent } from './Tickets/add-ticket-pictures/add-ticket-pictures.component';
 
 
 
@@ -109,6 +112,8 @@ export function tokenGetter() {
 
     RefreshComponent,
 
+    AddTicketPicturesComponent,
+
 
   ],
   imports: [
@@ -144,6 +149,7 @@ export function tokenGetter() {
     TabsModule.forRoot(),
     FileUploadModule,
     MomentModule,
+    TypeaheadModule.forRoot(),
 
     //material
     MatTooltipModule,
@@ -162,7 +168,10 @@ export function tokenGetter() {
 
 
   ],
-  providers: [ {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true},
+    TicketDetailResolver
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

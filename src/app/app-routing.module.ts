@@ -12,6 +12,7 @@ import { ClientComponent } from './Client/client/client.component';
 import { TicketsComponent } from './Tickets/tickets/tickets.component';
 import { TicketEditComponent } from './Tickets/ticket-edit/ticket-edit.component';
 import { AddBulkTicketsComponent } from './Tickets/add-bulk-tickets/add-bulk-tickets.component';
+import { TicketDetailResolver } from './_Resolver/TicketDetailResolver.resolver';
 
 
 const routes: Routes = [
@@ -26,7 +27,9 @@ const routes: Routes = [
   { path: 'clients', component: ClientComponent, data: { breadcrumb: 'Client' },canActivate:[AuthGuard]},
   { path: 'clients/:id', component: EmployeeEditComponent, canActivate:[AuthGuard]},
   { path: 'tickets', component: TicketsComponent, data: { breadcrumb: 'Ticket' },canActivate:[AuthGuard]},
-  { path: 'tickets/:id', component: TicketEditComponent, canActivate:[AuthGuard]},
+  { path: 'tickets/:id', component: TicketEditComponent,
+  canActivate:[AuthGuard],
+  resolve: { tickets: TicketDetailResolver }},
   { path: 'ticket/addbulk', component: AddBulkTicketsComponent, canActivate:[AuthGuard]},
 
 

@@ -25,14 +25,14 @@ export class TicketsComponent implements OnInit {
    //table
    ELEMENT_DATA:ITicket[];
    displayedColumns: string[] = ['customerName','jobType', 'address', 'describtion', 'status'];
-   dataSource=new MatTableDataSource<ITicket>(this.ELEMENT_DATA);
+   //dataSource=new MatTableDataSource<ITicket>(this.ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator: MatPaginator;
-
-
+  dataSource;
+ // dataSource=new MatTableDataSource<ITicket>(this.ELEMENT_DATA);
   constructor(private api:TicketService, public dialog: MatDialog, private router:Router) { }
 
   ngAfterViewInit(): void {
-
+    this.dataSource=new MatTableDataSource<ITicket>(this.ELEMENT_DATA);
     this.dataSource.paginator = this.paginator;
   }
 

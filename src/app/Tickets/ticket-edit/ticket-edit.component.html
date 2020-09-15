@@ -1,99 +1,164 @@
 
-  <div class="row">
-    <div class="col-sm-4">
-        <h1>Your Profile</h1>
-    </div>
-    <div class="col-sm-8">
-      <div *ngIf="editForm.dirty" class="alert alert-info">
-        <strong>Information:</strong> You have made changes.  Any unsaved changes will be lost!
+ <div class="tab-panel">
+  <tabset class="member-tabset">
+    <tab heading="Edit Tickets">
+
+      <div class="container1">
+
+        <div class="col-sm-8">
+          <div *ngIf="myForm.dirty" class="alert alert-info">
+            <strong>Information:</strong> You have made changes.  Any unsaved changes will be lost!
+          </div>
+        </div>
+
+        <form [formGroup]="myForm" (ngSubmit)="updateTicket()">
+
+      <div class="row">
+
+        <div class="col-6">
+
+          <mat-form-field class= "full-width">
+            <mat-label>Address</mat-label>
+            <input matInput
+            formControlName="address"
+            [(ngModel)]="ticket.address">
+          </mat-form-field>
+
+        </div>
+
+        <div class="col-4">
+          <mat-form-field class= "full-width">
+            <mat-label>Job Type</mat-label>
+            <mat-select
+            formControlName="jobType"
+            [(ngModel)]="ticket.jobType">
+              <mat-option value="CIVIL_JOBS">CIVIL_JOBS</mat-option>
+              <mat-option value="DUCT_JOBS">DUCT_JOBS</mat-option>
+              <mat-option value="TESTING_JOBS">TESTING_JOBS</mat-option>
+              <mat-option value="PULL_THROUGH">PULL_THROUGH</mat-option>
+              <mat-option value="General">General</mat-option>
+
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+
+
+
       </div>
-    </div>
-  </div>
-  <div class="row">
-
-    <div class="col-sm-12">
-      <div class="tab-panel">
-        <tabset class="member-tabset">
-          <tab heading="Edit Profile">
 
 
+      <div class="row">
 
-            <form #editForm="ngForm" id="editForm" (ngSubmit)="updateTicket()">
-              <h4>Address</h4>
-                <input type="text"  name="address" class="form-control" [(ngModel)]="ticket.address">
+        <div class="col-6">
+          <mat-form-field class= "full-width">
+            <mat-label>Description</mat-label>
+            <input matInput
+            formControlName="describtion"
+            [(ngModel)]="ticket.describtion">
+          </mat-form-field>
+        </div>
+        <div class="col-4">
+          <mat-form-field class= "full-width">
+            <mat-label>Status</mat-label>
+            <mat-select
+            formControlName="status"
+            [(ngModel)]="ticket.status">
+              <mat-option value="Assigned">Assigned</mat-option>
+              <mat-option value="Pending">Pending</mat-option>
+              <mat-option value="Completed_not_Closed">Completed_not_Closed</mat-option>
+              <mat-option value="Completed_not_Invoiced">Completed_not_Invoiced</mat-option>
+              <mat-option value="Completed_and_Invoice_Updated">Completed_and_Invoice_Updated</mat-option>
 
-                <div class="row">
-                  <div class="col-md-6">
-                <h4>Job Type</h4>
-                <select class="form-control" name="jobType" [(ngModel)]="ticket.jobType" >
-                  <option value="" selected disabled hidden>Job Type</option>
+            </mat-select>
+          </mat-form-field>
 
-
-
-                 </select>
-                 </div>
-                 <div class="col-md-6">
-                 <h4>Status</h4>
-                 <select class="form-control" name="status" [(ngModel)]="ticket.status" >
-
-                   <option>Assigned</option>
-                     <option>Pending</option>
-                     <option>Completed_not_Closed</option>
-                     <option>Completed_not_Invoiced</option>
-                     <option>Completed_and_Invoice_Updated</option>
-
-
-                  </select>
-                  </div>
-                  </div>
-
-              <h4>Describtions</h4>
-              <textarea name="describtion" rows="1" class="form-control"
-                [(ngModel)]="ticket.describtion"></textarea>
+        </div>
 
 
-                <h4>Remarks</h4>
-              <textarea name="remarks" rows="1" class="form-control"
-                [(ngModel)]="ticket.remarks"></textarea>
-
-                <div class="row">
-                 <div class="col-md-6">
-
-
-                  </div>
-
-                 <div class="col-md-6">
-
-
-                 </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-6">
-                <h4><b>Add Employees</b></h4>
-
-
-                    </div>
-                    <div class="col-md-6">
-                <h4><b>Add Rates</b></h4>
-
-
-    </div>
-                </div>
-
-
-                <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">Save Changes</button>
-
-              </form>
-
-
-
-
-          </tab>
-          <tab heading="Edit Documents">
-
-          </tab>
-        </tabset>
       </div>
-    </div>
-  </div>
+
+
+      <div class="row">
+
+        <div class="col-10">
+          <mat-form-field class= "full-width">
+            <mat-label>Remarks</mat-label>
+            <input matInput
+            formControlName="remarks"
+            [(ngModel)]="ticket.remarks">
+          </mat-form-field>
+        </div>
+
+
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="col-6">
+
+          <mat-form-field class= "full-width">
+            <mat-label>clientName</mat-label>
+            <mat-select
+            formControlName="customerID"
+            [(ngModel)]="ticket.customerId">
+              <mat-option *ngFor="let itm of customer" [value]="itm.id">{{itm.customerName}}</mat-option>
+
+            </mat-select>
+          </mat-form-field>
+
+
+        </div>
+        <div class="col-4">
+          <mat-form-field class= "full-width">
+            <mat-label>clientName</mat-label>
+            <mat-select
+            formControlName="clientID"
+            [(ngModel)]="ticket.clientId">
+            <mat-option *ngFor="let itm of client" [value]="itm.id">{{itm.clientName}}</mat-option>
+
+
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+
+
+      </div>
+
+      <div class="row">
+      <div class="col-4">
+        <button [disabled]="!myForm.dirty" class="btn btn-success btn-block">Save Changes</button>
+      </div>
+
+      </div>
+
+
+
+      </form>
+
+
+        </div>
+
+
+    </tab>
+
+    <tab heading="Add Rates">
+      <app-ratecard></app-ratecard>
+      </tab>
+
+      <tab heading="Add Pictures">
+        <app-add-ticket-pictures [tktdocuments]="tktdocuments" [id]="id"></app-add-ticket-pictures>
+      </tab>
+
+</tabset>
+ </div>
+
+
+
+
+
+
+
