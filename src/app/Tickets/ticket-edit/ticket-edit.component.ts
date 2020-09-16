@@ -53,6 +53,7 @@ export class TicketEditComponent implements OnInit {
 
     this.route.data.subscribe(data => {
       this.ticket = data['tickets'];
+      this.id=this.ticket.id;
     });
 
     this.getAllCustomer();

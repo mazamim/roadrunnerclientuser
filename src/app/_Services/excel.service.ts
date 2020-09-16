@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import * as XLSX from 'xlsx';
 import { BulkTicket} from '../Tickets/add-bulk-tickets/add-bulk-tickets.component';
+import { BulkRatecard } from '../_Models/BulkRatecard';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,12 @@ export class ExcelService {
   AddbulkTickets(ticket: BulkTicket[]) {
 
     return this.http.post<BulkTicket>(this.baseUrl + 'ticket', ticket );
+}
+
+
+AddbulkRatecard(ratecard: BulkRatecard[])
+{
+  return this.http.post<BulkRatecard>(this.baseUrl + 'ratecard', ratecard );
+
 }
 }

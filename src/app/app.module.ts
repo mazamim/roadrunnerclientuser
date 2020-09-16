@@ -65,6 +65,7 @@ import { AddBulkTicketsComponent } from './Tickets/add-bulk-tickets/add-bulk-tic
 import { RefreshComponent } from './refresh/refresh.component';
 import { TicketDetailResolver } from './_Resolver/TicketDetailResolver.resolver';
 import { AddTicketPicturesComponent } from './Tickets/add-ticket-pictures/add-ticket-pictures.component';
+import { AddBulkRatecardComponent } from './Tickets/ratecard/add-bulk-ratecard/add-bulk-ratecard.component';
 
 
 
@@ -113,6 +114,8 @@ export function tokenGetter() {
     RefreshComponent,
 
     AddTicketPicturesComponent,
+
+    AddBulkRatecardComponent,
 
 
   ],

@@ -13,6 +13,7 @@ import { TicketsComponent } from './Tickets/tickets/tickets.component';
 import { TicketEditComponent } from './Tickets/ticket-edit/ticket-edit.component';
 import { AddBulkTicketsComponent } from './Tickets/add-bulk-tickets/add-bulk-tickets.component';
 import { TicketDetailResolver } from './_Resolver/TicketDetailResolver.resolver';
+import { AddBulkRatecardComponent } from './Tickets/ratecard/add-bulk-ratecard/add-bulk-ratecard.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   canActivate:[AuthGuard],
   resolve: { tickets: TicketDetailResolver }},
   { path: 'ticket/addbulk', component: AddBulkTicketsComponent, canActivate:[AuthGuard]},
+  { path: 'ratecard/addbulk', component: AddBulkRatecardComponent, canActivate:[AuthGuard]},
 
 
 ];
