@@ -1,0 +1,33 @@
+table {
+  width: 100%;
+}
+.form-inline .form-group {
+  margin-right:50px;
+
+
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+.mat-row:hover {
+  background-color:lightgray;
+  cursor: pointer;
+}
+
+mat-list-item :hover {
+
+  background-color:lightgray;
+  cursor: pointer;
+}
+
+
+.card-footer:hover
+{
+  background-color: #f66436;
+  border-radius: 7px;
+  box-shadow: 2px 5px 20px #111;
+  transform: translateY(-1px);
+  cursor: pointer;
+
+}

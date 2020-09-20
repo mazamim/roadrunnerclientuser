@@ -24,7 +24,7 @@ export class EmployeeComponent implements OnInit,AfterViewInit  {
   //table
   ELEMENT_DATA:ITableData[];
   displayedColumns: string[] = ['employeeName', 'position', 'mobile', 'emailadd'];
-  dataSource=new MatTableDataSource<ITableData>(this.ELEMENT_DATA);
+  dataSource;
  @ViewChild(MatPaginator) paginator: MatPaginator;
 //table
 
@@ -40,7 +40,7 @@ myForm = new FormGroup({
 
 
     ngAfterViewInit(): void {
-
+     this.dataSource=new MatTableDataSource<ITableData>(this.ELEMENT_DATA);
       this.dataSource.paginator = this.paginator;
     }
     ngOnInit(): void {
@@ -60,13 +60,18 @@ myForm = new FormGroup({
     openDialog() {
 
 
-this.dialog.open(DialogContentEmployeesComponent,{
+      const dialogRef =this.dialog.open(DialogContentEmployeesComponent,{
           width: '60%',
           height:'40%',
         // data:row
         }
         );
 
+        // dialogRef.afterClosed().subscribe(recievedeData=> {
+
+        //   // alert('ERROR!! :-)\n\n' + JSON.stringify(recievedeData, null, 4));
+
+        // });
 
     }
 

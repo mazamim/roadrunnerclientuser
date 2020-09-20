@@ -3,6 +3,7 @@ import { EmployeeService } from '../employee.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { IEmployee, ITableData } from 'src/app/_Models/IEmployee';
 
 @Component({
   selector: 'app-dialog-content-employees',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class DialogContentEmployeesComponent implements OnInit {
   public employeeForm: FormGroup;
+  afterClosedData:ITableData[]=[];
   constructor(private empservice: EmployeeService,
     public fb: FormBuilder,
     public toastr: ToastrService,
@@ -38,6 +40,8 @@ export class DialogContentEmployeesComponent implements OnInit {
   submitEmployeeData() {
     this.empservice.AddEmployee(this.employeeForm.value).subscribe((data=>{
       this.toastr.success(data.employeeName + ' successfully Added!');
+
+      this.afterClosedData.push(this.employeeForm.value);
       // this.crudApi.GetEmployeeList();
       // this.cusservice.refresh();
     }));

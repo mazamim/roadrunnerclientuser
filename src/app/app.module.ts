@@ -27,6 +27,7 @@ import { MomentModule } from 'ngx-moment';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 
 //material
+import {MatListModule} from '@angular/material/list';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -66,6 +67,7 @@ import { RefreshComponent } from './refresh/refresh.component';
 import { TicketDetailResolver } from './_Resolver/TicketDetailResolver.resolver';
 import { AddTicketPicturesComponent } from './Tickets/add-ticket-pictures/add-ticket-pictures.component';
 import { AddBulkRatecardComponent } from './Tickets/ratecard/add-bulk-ratecard/add-bulk-ratecard.component';
+import { OpendialogforQTYComponentComponent } from './Tickets/ratecard/opendialogfor-qtycomponent/opendialogfor-qtycomponent.component';
 
 
 
@@ -117,6 +119,8 @@ export function tokenGetter() {
 
     AddBulkRatecardComponent,
 
+    OpendialogforQTYComponentComponent,
+
 
   ],
   imports: [
@@ -166,7 +170,8 @@ export function tokenGetter() {
     MatProgressSpinnerModule,
     MatDialogModule,
     MatIconModule,
-    MatTableExporterModule
+    MatTableExporterModule,
+    MatListModule
 
 
 

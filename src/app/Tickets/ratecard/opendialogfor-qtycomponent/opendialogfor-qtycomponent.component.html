@@ -1,0 +1,13 @@
+<p mat-dialog-title>SOR is- {{data.sor}}</p>
+<p mat-dialog-title>RATE is- ${{data.rate}}</p>
+<div mat-dialog-content>
+
+  <mat-form-field>
+    <mat-label>Add QTY</mat-label>
+    <input matInput [(ngModel)]="data.qty">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

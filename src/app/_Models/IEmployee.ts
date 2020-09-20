@@ -20,7 +20,7 @@ export interface IEmployee {
 }
 
 export interface ITableData {
-  id:number;
+  id?:number;
   employeeName:string;
   position: string;
   mobile: string

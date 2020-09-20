@@ -7,7 +7,7 @@ import { ClientService } from 'src/app/Client/client.service';
 import { CustomerService } from 'src/app/Customer/customer.service';
 import { IClient } from 'src/app/_Models/IClient';
 import { ICustomer } from 'src/app/_Models/ICustomer';
-import { ITicket } from 'src/app/_Models/ITicket';
+import { IRateCardofAticket, ITicket } from 'src/app/_Models/ITicket';
 import { TicketDoc } from 'src/app/_Models/TicketDoc';
 import { OpendialogforTicketTimeComponent, TicketTime } from '../opendialogfor-ticket-time/opendialogfor-ticket-time.component';
 
@@ -24,6 +24,7 @@ export class TicketEditComponent implements OnInit {
   //states: string[]=[];
   customer:ICustomer[];
   client:IClient[];
+  ratecardofaticket:IRateCardofAticket[];
 
   myForm = new FormGroup({
     address:new FormControl,
@@ -32,7 +33,7 @@ export class TicketEditComponent implements OnInit {
     status:new FormControl,
     remarks:new FormControl,
     customerID:new FormControl,
-    clientID:new FormControl,
+    clientId:new FormControl,
 
 
   });
@@ -53,23 +54,20 @@ export class TicketEditComponent implements OnInit {
 
     this.route.data.subscribe(data => {
       this.ticket = data['tickets'];
-      this.id=this.ticket.id;
+     this.id=this.ticket.id;
     });
 
     this.getAllCustomer();
     this.getAllClient();
     this.getDocuments();
+    this.getRatecardofAticket();
 
   }
 
 getAllCustomer(){
 this.cusAPI.GetCustomerList().subscribe(data=>{
 this.customer = data as ICustomer[];
-// for(let i = 0; i < mydata.length; i++)
-// {
-//   this.states.push(mydata[i].customerName.toString());
 
-// }
 });
 
 }
@@ -87,6 +85,16 @@ this.crudApi.LoadAllTicketDocuments(this.id).subscribe(data=>{
 
   this.tktdocuments=data as TicketDoc[];
 });
+}
+
+getRatecardofAticket(){
+
+  this.crudApi.getRateCardofaTicket(this.id).subscribe(
+  (data)=>{
+
+this.ratecardofaticket = data as IRateCardofAticket[];
+  }
+  );
 }
 
 

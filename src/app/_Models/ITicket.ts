@@ -41,3 +41,12 @@ export interface IByTicketID {
   ticketId: number;
   address: string;
 }
+export interface IRateCardofAticket {
+  id?: number;
+  ticketId: number;
+  rateCardID:number;
+  rateCardName:string;
+  rate:number;
+  qty:number;
+
+}

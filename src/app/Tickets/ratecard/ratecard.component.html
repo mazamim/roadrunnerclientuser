@@ -1,1 +1,113 @@
-<p>ratecard works!</p>
+<div class="row">
+
+
+<div class="col-xl-9 col-md-9">
+
+
+  <form class="form-inline" [formGroup]="myForm">
+    <div class="form-group">
+      <input type="text"
+      class="form-control"
+      placeholder="Search"
+      (keyup)="applyFilter($event.target.value)"
+      >
+     </div>
+  </form>
+  <br>
+
+
+  <div class="mat-elevation-z8">
+
+
+    <table mat-table matTableExporter [dataSource]="dataSource" #exporter="matTableExporter">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Category </th>
+        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="sor">
+        <th mat-header-cell *matHeaderCellDef> SOR </th>
+        <td mat-cell *matCellDef="let element"> {{element.sor}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="uom">
+        <th mat-header-cell *matHeaderCellDef> UOM </th>
+        <td mat-cell *matCellDef="let element"> {{element.uom}} </td>
+      </ng-container>
+
+       <!-- Symbol Column -->
+            <ng-container matColumnDef="rate">
+              <th mat-header-cell *matHeaderCellDef> Rate</th>
+              <td mat-cell *matCellDef="let element"> {{element.rate}} </td>
+            </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="clientid">
+                <th mat-header-cell *matHeaderCellDef> Client</th>
+                <td mat-cell *matCellDef="let element"> {{element.clientid}} </td>
+              </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+      (click)="openDialog(row)"></tr>
+
+    </table>
+
+    <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+
+    >
+  </mat-paginator>
+  </div>
+</div>
+
+
+
+<div class="col-xl-2 col-md-3 mt-5">
+  <div class="card card-common">
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+
+        <div class="text-right text-secondary">
+          <mat-list>
+            <mat-list-item *ngFor="let item of fromParentratecardofaticket" (click)="removefromlist(item)">
+
+              <h3 matLine> {{item.rateCardName}} </h3>
+              <p matLine> {{item.qty}} *{{item.rate}} </p>
+              <p matLine class="demo-2"> {{item.qty*item.rate}} </p>
+           </mat-list-item>
+
+          </mat-list>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-secondary">
+      <i class="fas fa-sync mr-3"></i>
+      <span (click)="updateRates()">Updated Now</span>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+

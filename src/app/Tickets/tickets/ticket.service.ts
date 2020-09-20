@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { IEmployeeForTicket } from 'src/app/_Models/IEmployee';
-import { ITicket, IByTicketID } from 'src/app/_Models/ITicket';
+import { ITicket, IByTicketID, IRateCardofAticket } from 'src/app/_Models/ITicket';
+import { BulkRatecard } from 'src/app/_Models/BulkRatecard';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,17 @@ LoadAllTicketDocuments(tktId: number)
 {
   return this.http.get(this.baseUrl + 'ticket/' + tktId + '/documets/all/'+ tktId);
 
+}
+
+//http://localhost:5000/ratecard/getall
+getAllRateCard(){
+  return this.http.get<BulkRatecard[]>(this.baseUrl + 'ratecard/getall');
+}
+
+//http://localhost:5000/ratecard/ratesbyticket/1
+
+getRateCardofaTicket(tkt:number){
+  return this.http.get<IRateCardofAticket[]>(this.baseUrl + 'ratecard/ratesbyticket/'+tkt);
 }
 
 
