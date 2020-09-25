@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ToastrService } from 'ngx-toastr';
 import { BulkRatecard } from 'src/app/_Models/BulkRatecard';
 import { IRateCardofAticket } from 'src/app/_Models/ITicket';
 import { TicketService } from '../tickets/ticket.service';
@@ -29,8 +30,9 @@ export class RatecardComponent implements OnInit {
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @Input() fromParentratecardofaticket: IRateCardofAticket[];
+  @Input() tktid: number;
 
-  constructor(private api:TicketService,public dialog: MatDialog) { }
+  constructor(private api:TicketService,public dialog: MatDialog,private toaster:ToastrService) { }
 
   ngOnInit(): void {
 
@@ -77,7 +79,16 @@ applyFilter(filterValue:string){
 
   updateRates()
   {
+      this.api.addRateCardofaTicket(this.fromParentratecardofaticket,this.tktid).subscribe(()=>
+      {
+        this.toaster.success("Successfully Updated");
+      }
+      ,
+      error=>{
+        this.toaster.error("Error Occured While Updating");
+      }
 
+      );
 
   }
 
@@ -94,7 +105,7 @@ applyFilter(filterValue:string){
  // alert('SUCCESS!! :-)\n\n' + JSON.stringify(data, null, 4));
       this.fromParentratecardofaticket.push(
         {
-          ticketId : 1,
+          ticketId : this.tktid,
           rateCardID:data.id,
           rateCardName:data.sor,
           rate:data.rate,

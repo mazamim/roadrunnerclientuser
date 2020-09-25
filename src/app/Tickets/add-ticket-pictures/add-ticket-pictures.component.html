@@ -1,23 +1,36 @@
-<div class="row">
-  <div class="col-sm-1 img-wrapper" *ngFor="let photo of tktdocuments">
-    <img src="{{photo.url}}" class="img-thumbnail p-1" alt=""
-   >
+<div class="container-fluid">
+  <div class="row">
 
 
-
-    <div class="text-center">
-      <button type="button" class="btn btn-sm mr-1"
-        [ngClass]="photo.isMain ? 'btn-success active' : 'btn-secondary'"
-
-     >Main</button>
-      <button type="button" class="btn btn-sm btn-danger"
-        [disabled]="photo.isMain"
-        ><i class="fa fa-trash-o"></i></button>
+    <div class="col-sm-1 img-wrapper" *ngFor="let photo of tktdocuments">
+      <img  src="{{photo.url}}" class="img-thumbnail m-1" alt="" (click)="openModal(template)">
     </div>
+
+    <ng-template #template>
+      <div class="modal-header">
+
+        <button type="button" class="btn btn-sm btn-danger">Delete</button>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ngx-image-viewer
+        [src]="images"
+        [(index)]="imageIndexOne"
+
+        >
+      </ngx-image-viewer>
+      </div>
+    </ng-template>
+
   </div>
+
 </div>
 
-<div class="row mt-3">
+<div class="container-fluid">
+
+  <div class="row mt-3">
 
     <div class="col-md-3">
 
@@ -32,11 +45,20 @@
             Drop Photos Here
         </div>
 
-        Multiple
-        <input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
+      <div class="d-flex flex-column">
+        <div class="p-2">
+          <p class="font-weight-normal">Multiple</p>
+          <input type="file" ng2FileSelect [uploader]="uploader" multiple  />
+        </div>
+        <div class="p-2">
+          <p class="font-weight-normal">Single</p>
+          <input type="file" ng2FileSelect [uploader]="uploader" />
+        </div>
 
-        Single
-        <input type="file" ng2FileSelect [uploader]="uploader" />
+      </div>
+
+
+        </div>
     </div>
 
     <div class="col-md-9" style="margin-bottom: 40px" *ngIf="uploader?.queue?.length">
@@ -83,3 +105,7 @@
     </div>
 
 </div>
+
+
+
+

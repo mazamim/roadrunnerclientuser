@@ -1,7 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { TicketDoc } from 'src/app/_Models/TicketDoc';
 import { environment } from 'src/environments/environment';
+
+
 
 @Component({
   selector: 'app-add-ticket-pictures',
@@ -14,14 +17,30 @@ export class AddTicketPicturesComponent implements OnInit {
   @Input() tktdocuments: TicketDoc[];
   @Input() id: number;
   hasBaseDropZoneOver = false;
-  constructor() { }
+  imageIndexOne=0;
+  modalRef: BsModalRef;
+  images=[];
+  constructor(private modalService: BsModalService) { }
 
   ngOnInit(): void {
     this.initializeUploader();
+
   }
   fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
   }
+  openModal(template: TemplateRef<any>) {
+
+//  this.imageIndexOne= e-1;
+this.tktdocuments.forEach((element) => {
+this.images.push(element.url);
+
+});
+//alert('ERROR!! :-)\n\n' + JSON.stringify(this.images, null, 4));
+    this.modalRef = this.modalService.show(template);
+  }
+
+
 
   initializeUploader() {
     this.uploader = new FileUploader({

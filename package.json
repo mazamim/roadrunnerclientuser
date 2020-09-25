@@ -23,6 +23,7 @@
     "@angular/router": "~9.1.11",
     "@auth0/angular-jwt": "^5.0.1",
     "@swimlane/ngx-charts": "^14.0.0",
+    "@udhsin/ngx-image-viewer": "^1.0.5",
     "bootswatch": "^4.5.2",
     "mat-table-exporter": "^9.0.2",
     "moment": "^2.27.0",

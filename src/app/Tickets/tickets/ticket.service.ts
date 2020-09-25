@@ -48,5 +48,19 @@ getRateCardofaTicket(tkt:number){
   return this.http.get<IRateCardofAticket[]>(this.baseUrl + 'ratecard/ratesbyticket/'+tkt);
 }
 
+//http://localhost:5000/ratecard/updaterates/1
+addRateCardofaTicket(ratecardofatkt:IRateCardofAticket[],tkt:number)
+{
+  return this.http.post<IRateCardofAticket>(this.baseUrl + 'ratecard/updaterates/'+tkt,ratecardofatkt);
+
+}
+
+//http://localhost:5000/ticket/1
+
+updateTicket(tkt:ITicket)
+{
+  return this.http.put<ITicket>(this.baseUrl + 'ticket/'+tkt.id,tkt);
+
+}
 
 }

@@ -62,13 +62,13 @@
           <mat-form-field class= "full-width">
             <mat-label>Status</mat-label>
             <mat-select
+            #status
             formControlName="status"
-            [(ngModel)]="ticket.status">
+            [(ngModel)]="ticket.status" (ngModelChange)="selectChange($event)">
               <mat-option value="Assigned">Assigned</mat-option>
               <mat-option value="Pending">Pending</mat-option>
               <mat-option value="Completed_not_Closed">Completed_not_Closed</mat-option>
-              <mat-option value="Completed_not_Invoiced">Completed_not_Invoiced</mat-option>
-              <mat-option value="Completed_and_Invoice_Updated">Completed_and_Invoice_Updated</mat-option>
+
 
             </mat-select>
           </mat-form-field>
@@ -81,7 +81,21 @@
 
       <div class="row">
 
-        <div class="col-10">
+<div class="col-2" *ngIf="status.value=='Completed_not_Closed'">
+
+  <div class="form-group" >
+    <input type="text"
+    class="form-control"
+    placeholder="Datepicker"
+    [bsConfig]="{ dateInputFormat: 'YYYY/MM/DD' }"
+    bsDatepicker
+    [(ngModel)]="ticket.updated"
+    formControlName="updated" />
+  </div>
+</div>
+
+
+        <div class="col-8">
           <mat-form-field class= "full-width">
             <mat-label>Remarks</mat-label>
             <input matInput
@@ -146,7 +160,7 @@
     </tab>
 
     <tab heading="Add Rates">
-      <app-ratecard [fromParentratecardofaticket]="ratecardofaticket"></app-ratecard>
+      <app-ratecard [fromParentratecardofaticket]="ratecardofaticket" [tktid]="id"></app-ratecard>
       </tab>
 
       <tab heading="Add Pictures">

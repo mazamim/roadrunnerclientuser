@@ -20,6 +20,7 @@ import { TicketService } from '../tickets/ticket.service';
 })
 export class TicketEditComponent implements OnInit {
 
+
   tktdocuments: TicketDoc[];
   //states: string[]=[];
   customer:ICustomer[];
@@ -34,6 +35,7 @@ export class TicketEditComponent implements OnInit {
     remarks:new FormControl,
     customerID:new FormControl,
     clientId:new FormControl,
+    updated: new FormControl
 
 
   });
@@ -72,6 +74,16 @@ this.customer = data as ICustomer[];
 
 }
 
+selectChange(event: any)
+{
+if(event=="Completed_not_Closed")
+{
+
+
+}
+
+}
+
 getAllClient(){
   this.clientAPI.GetClientList().subscribe(data=>{
     this.client = data as IClient[];
@@ -100,7 +112,12 @@ this.ratecardofaticket = data as IRateCardofAticket[];
 
   updateTicket(){
 
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.ticket, null, 4));
+
+
+    this.crudApi.updateTicket(this.ticket).subscribe(()=>{
+      this.toastr.success("successfully updated!!");
+
+    });
   }
 
 

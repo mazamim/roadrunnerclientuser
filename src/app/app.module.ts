@@ -25,6 +25,9 @@ import { OwlModule } from 'ngx-owl-carousel';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { MomentModule } from 'ngx-moment';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import { ImageViewerModule } from "@udhsin/ngx-image-viewer";
+
+
 
 //material
 import {MatListModule} from '@angular/material/list';
@@ -68,7 +71,8 @@ import { TicketDetailResolver } from './_Resolver/TicketDetailResolver.resolver'
 import { AddTicketPicturesComponent } from './Tickets/add-ticket-pictures/add-ticket-pictures.component';
 import { AddBulkRatecardComponent } from './Tickets/ratecard/add-bulk-ratecard/add-bulk-ratecard.component';
 import { OpendialogforQTYComponentComponent } from './Tickets/ratecard/opendialogfor-qtycomponent/opendialogfor-qtycomponent.component';
-
+import { TicketManagementComponent } from './ticket-management/ticket-management.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 export function tokenGetter() {
@@ -121,6 +125,8 @@ export function tokenGetter() {
 
     OpendialogforQTYComponentComponent,
 
+    TicketManagementComponent,
+
 
   ],
   imports: [
@@ -146,6 +152,7 @@ export function tokenGetter() {
     OwlModule,
     TimepickerModule.forRoot(),
 
+    ImageViewerModule.forRoot(),
 
     //ngx
     NgxChartsModule,
@@ -157,6 +164,7 @@ export function tokenGetter() {
     FileUploadModule,
     MomentModule,
     TypeaheadModule.forRoot(),
+    ModalModule.forRoot(),
 
     //material
     MatTooltipModule,
